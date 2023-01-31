@@ -1,0 +1,1 @@
+"use strict";var signup_popup=document.querySelector(".popup"),close_button=document.querySelector(".cancel");document.body.addEventListener("load",function(){setTimeout(function(){signup_popup.style.display="flex"},5e3)}),close_button.addEventListener("click",function(){signup_popup.style.display="none"});

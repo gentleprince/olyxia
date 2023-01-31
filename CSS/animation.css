@@ -1,0 +1,9 @@
+/* Animation */
+@keyframes image {
+  from{
+    transform: translateY(0) rotateZ(0);
+  }
+  to{
+    transform:rotateZ(5deg) translateY(40px);
+  }  
+}
