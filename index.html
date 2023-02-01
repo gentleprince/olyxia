@@ -42,8 +42,7 @@
                     <div class="row signup_form_row mt-4">
                         <div class="col col-sm-auto">
                             <input type="email" name="emails" id="email" class="form-control" placeholder="Email"
-                                aria-describedby="Email"
-                                pattern="/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/">
+                                aria-describedby="Email" pattern=".+@.+\..+" required>
                         </div>
                         <div class="col signup_form_button">
                             <input type="submit" value="SUBSCRIBE" class="btn btn-info text-dark rounded btn-hov">
@@ -83,6 +82,7 @@
                     <div class="form-group my-4">
                         <input type="email" name="emails" id="email" class="form-control" placeholder="Email Address"
                             aria-describedby="Email Address">
+                        <!-- pattern=".+@.+\..+" required -->
                     </div>
                     <div class="form-check mb-4">
                         <input type="checkbox" class="form-check-input" id="consent">

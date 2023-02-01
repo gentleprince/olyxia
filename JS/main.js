@@ -20,15 +20,15 @@ const Signup_email = document.SignupPopupForm.emails;
 const Free_Trial_email = document.FTPopupForm.emails;
 const Free_Trial_fullName = document.FTPopupForm.fullname;
 const error_message = document.querySelector('.error_message');
-const email_regex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+const email_regex = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-]+)(\.[a-zA-Z]{2,5}){1,2}$/;
 const fullname_empty_regex = /^\s*$/;
-const fullname_alpha_regex = /^[A-Za-z]+$/;
+const fullname_alpha_regex = /^[a-zA-Z]+$/;
 
 // html elements for json data
 const testimonial = document.querySelector('.testimonial');
 const team = document.querySelector('.team');
 const btn_show_team = document.querySelector('.show_team');
-const btn_change = document.querySelector('.btn_change')
+const btn_change = document.querySelector('.btn_change');
 // arrow to view more
 const right_arrow = document.querySelector('.fa-arrow-right-long');
 const left_arrow = document.querySelector('.fa-arrow-left-long');
@@ -44,9 +44,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 2000);
 
         // to trigger free trial form
-        btn_free_trial.onclick = () =>
+        btn_free_trial.onclick = () => {
             trial_popup.style.display = 'flex';
-
+            Free_Trial_fullName.focus();
+        }
     }
 
     // to close popup after toggling
@@ -76,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // length of Json object gotten from api
         let employees_length = data.olyxia.employees.length;
         let clients_length = data.olyxia.clients.length;
-        
+
         // olyxia clients/testimonial
         for (i = 0; i < clients_length; i++) {
             let testimonials = datas => `<div class="card-body bg-light">
@@ -159,19 +160,19 @@ Free_Trial_form.onsubmit = () => {
         error_message.innerHTML = "Name field cannot be empty";
         Free_Trial_fullName.classList.add('error_color');
         return false;
-    } else if (Free_Trial_fullName.value.length === 1) {
+    } else if (Free_Trial_fullName.value.length <= 3) {
         Free_Trial_fullName.focus();
-        error_message.innerHTML = 'Name field must be more than one character';
+        error_message.innerHTML = 'Name field must be more than two character';
+        Free_Trial_fullName.classList.add('error_color');
+        return false;
+    } else if (!fullname_alpha_regex.test(fullName.value)) {
+        Free_Trial_fullName.focus();
+        error_message.innerHTML = `Only alphabetical characters are allowed`;
         Free_Trial_fullName.classList.add('error_color');
         return false;
     } else if (fullName.value.match(fullname_empty_regex)) {
         Free_Trial_fullName.focus();
         error_message.innerHTML = `Input cannot be empty`;
-        Free_Trial_fullName.classList.add('error_color');
-        return false;
-    } else if (fullName.value.match(fullname_alpha_regex)) {
-        Free_Trial_fullName.focus();
-        error_message.innerHTML = `Only alphabetical characters are allowed`;
         Free_Trial_fullName.classList.add('error_color');
         return false;
     }
@@ -186,10 +187,10 @@ Free_Trial_form.onsubmit = () => {
         error_message.innerHTML = "You have entered an invalid email address";
         Free_Trial_email.classList.add('error_color');
         return false;
-    } else {
-        Free_Trial_fullName.classList.remove('error_color');
-        Free_Trial_email.classList.remove('error_color');
-        return true;
+        // } else {
+        //     Free_Trial_fullName.classList.remove('error_color');
+        //     Free_Trial_email.classList.remove('error_color');
+        //     return true;
     }
 };
 
