@@ -29,7 +29,8 @@ const testimonial = document.querySelector('.testimonial');
 const team = document.querySelector('.team');
 const btn_show_team = document.querySelector('.show_team');
 const btn_change = document.querySelector('.btn_change');
-// arrow to view more
+
+// arrow to view more testimonials
 const right_arrow = document.querySelector('.fa-arrow-right-long');
 const left_arrow = document.querySelector('.fa-arrow-left-long');
 
@@ -99,6 +100,36 @@ document.addEventListener('DOMContentLoaded', () => {
         //     card_subtitle.innerHTML = client.title;
         //     card_text.innerHTML = client.testimony;
         // });
+
+        // to scroll testimonial
+        let scroll_value = 0;
+        const max_scroll = 350 * (clients_length - 3);
+        // to the right
+        right_arrow.onclick = () => {
+            if (scroll_value >= max_scroll) {
+                scroll_value = scroll_value + 0;
+                testimonial.scrollTo(scroll_value, 0);
+            } else {
+                scroll_value = scroll_value + 350;
+                testimonial.scrollTo({
+                    left: scroll_value,
+                    behavior: 'smooth'
+                });
+            }
+        }
+        // to the left
+        left_arrow.onclick = () => {
+            if (scroll_value > 0) {
+                scroll_value = scroll_value - 350
+                testimonial.scrollTo({
+                    left: scroll_value,
+                    behavior: 'smooth'
+                });
+            } else {
+                scroll_value = scroll_value + 0;
+                testimonial.scrollTo(scroll_value, 0);
+            }
+        }
 
         // olyxia employee/team members
         btn_change.onclick = () => {

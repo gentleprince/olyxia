@@ -3,6 +3,9 @@
   --btnColor:#d58b05;
 }
 /* Global styling */
+*{
+  scroll-behavior: smooth;
+}
 /* for whole bg-color + menu background */
 body,.bg,.modal-content,.accordion-item,.popup_content,.accordion-button,.accordion-button:hover{
     background-color:var(--brand);
@@ -155,7 +158,11 @@ body,.bg,.modal-content,.accordion-item,.popup_content,.accordion-button,.accord
 /* Testimonial section */
 .testimonial{
   border:none;
-  background-color: rgba(255,205,100,-0.5)
+  background-color: rgba(255,205,100,-0.5);
+  grid-auto-flow: column;
+  grid-auto-columns: calc(calc(100%/3) - 20px);
+  grid-template-columns: none !important;
+  overflow-x: hidden;
 }
 .card-head{
   display: flex;
@@ -167,8 +174,19 @@ body,.bg,.modal-content,.accordion-item,.popup_content,.accordion-button,.accord
   height: 40px;
   margin-right:10px;
 }
-.fa-arrow-right-long,.fa-arrow-left-long{
+.favi-arrow{
   cursor: pointer;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: .6s ease-in-out;
+}
+.favi-arrow:hover{
+  transition: .5s ease-in-out;
+  background-color: rgb(213 139 5 / 15%);
+  border-radius: 50%;
 }
 
 /* footer */
