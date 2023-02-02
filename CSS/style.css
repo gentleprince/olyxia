@@ -1,6 +1,7 @@
 :root{
   --brand:rgb(251 243 220);
   --btnColor:#d58b05;
+  --boxShadow:5px 5px var(--btnColor);
 }
 /* Global styling */
 *{
@@ -131,13 +132,13 @@ body,.bg,.modal-content,.accordion-item,.popup_content,.accordion-button,.accord
   width:200px;
   height:200px;
   border: 1px solid black;
-  box-shadow:5px 5px var(--btnColor);
+  box-shadow: var(--boxShadow);
   transition: .8s linear;
 }
 .boxmid{
   width:260px;
   height:260px;
-  box-shadow:5px 5px var(--btnColor);
+  box-shadow:var(--boxShadow);
   transition: .8s linear;
 }
 .imgbox{
@@ -160,8 +161,6 @@ body,.bg,.modal-content,.accordion-item,.popup_content,.accordion-button,.accord
   border:none;
   background-color: rgba(255,205,100,-0.5);
   grid-auto-flow: column;
-  grid-auto-columns: calc(calc(100%/3) - 20px);
-  grid-template-columns: none !important;
   overflow-x: hidden;
 }
 .card-head{
@@ -375,6 +374,11 @@ body,.bg,.modal-content,.accordion-item,.popup_content,.accordion-button,.accord
 }
 
 /* Testimonial */
+.testimonial{
+  display: grid;
+  grid-auto-rows: 100%;
+  grid-auto-columns: 100%;
+}
 .py-sm-5 {
     padding: 12% 0 13% 0 !important;
 }
@@ -382,6 +386,7 @@ body,.bg,.modal-content,.accordion-item,.popup_content,.accordion-button,.accord
   justify-content: space-evenly !important;
 }
 
+/* footer */
 .footer{
   display: grid;
   grid-template-areas:
@@ -541,7 +546,7 @@ body,.bg,.modal-content,.accordion-item,.popup_content,.accordion-button,.accord
   box-shadow: inset 5px 4px black;
 }
 
-.bw,.bw-1{
+.bw{
   border-width: 10px;
   background-color: rgb(251, 255, 238);
   border-color: rgb(251, 255, 238);
@@ -550,12 +555,15 @@ body,.bg,.modal-content,.accordion-item,.popup_content,.accordion-button,.accord
   position: relative;
   border-radius: 0;
   z-index: 1;
+  padding: 10px;
+  margin: 10px;
+  box-shadow:var(--boxShadow);
 }
 
-.bw-1{
-  padding-left: 10px;
-  z-index:10;
-  animation:image 0.8s linear forwards;
+.bw-anim{
+  padding-left: 20px;
+  animation: image 0.8s linear forwards;
+  margin: -34px;
   }
   
 .box:hover{
@@ -573,6 +581,11 @@ body,.bg,.modal-content,.accordion-item,.popup_content,.accordion-button,.accord
   margin-top: 7vh;
 }
 
+/* testimonials */
+.testimonial{
+  grid-auto-columns: calc(calc(100%/3) - 20px);
+  grid-template-columns: none !important;
+}
 /* grid for team member and testimonial */
 .grid{
   display:grid;
@@ -661,6 +674,6 @@ body,.bg,.modal-content,.accordion-item,.popup_content,.accordion-button,.accord
     transform: translateY(0) rotateZ(0);
   }
   to{
-    transform:rotateZ(5deg) translateY(40px);
+    transform: rotateZ(7deg) translate(-10px,40px);
   }  
 }
