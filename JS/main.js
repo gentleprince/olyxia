@@ -20,18 +20,20 @@ const Signup_email = document.SignupPopupForm.emails;
 const Free_Trial_email = document.FTPopupForm.emails;
 const Free_Trial_fullName = document.FTPopupForm.fullname;
 const error_message = document.querySelector('.error_message');
-const email_regex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+const email_regex = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-]+)(\.[a-zA-Z]{2,5}){1,2}$/;
 const fullname_empty_regex = /^\s*$/;
-const fullname_alpha_regex = /^[A-Za-z]+$/;
+const fullname_alpha_regex = /^[a-zA-Z]+$/;
 
 // html elements for json data
 const testimonial = document.querySelector('.testimonial');
 const team = document.querySelector('.team');
 const btn_show_team = document.querySelector('.show_team');
-const btn_change = document.querySelector('.btn_change')
-// arrow to view more
+const btn_change = document.querySelector('.btn_change');
+
+// arrow to view more testimonials
 const right_arrow = document.querySelector('.fa-arrow-right-long');
 const left_arrow = document.querySelector('.fa-arrow-left-long');
+
 
 // to display popups
 document.addEventListener('DOMContentLoaded', () => {
@@ -44,9 +46,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 2000);
 
         // to trigger free trial form
-        btn_free_trial.onclick = () =>
+        btn_free_trial.onclick = () => {
             trial_popup.style.display = 'flex';
-
+            Free_Trial_fullName.focus();
+        }
     }
 
     // to close popup after toggling
@@ -58,6 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 trial_popup.style.display = 'none';
         }
     }
+
 
     // to fetch and display json data
     olyxia();
@@ -74,47 +78,122 @@ document.addEventListener('DOMContentLoaded', () => {
         const response = await fetch(url, headers_option);
         const data = await response.json();
         // length of Json object gotten from api
-        let employees_length = data.olyxia.employees.length;
         let clients_length = data.olyxia.clients.length;
-        
-        // olyxia clients/testimonial
-        for (i = 0; i < clients_length; i++) {
-            let testimonials = datas => `<div class="card-body bg-light">
+        let clients = data.olyxia.clients;
+        let employees = data.olyxia.employees;
+        // to display olyxia clients/testimonial
+        const client = clients.map(clt => {
+            let testimonials = datas => `<div class="card-body bg-light card_width">
                         <div class="card-head"> 
-                            <img src='${datas.olyxia.clients[i]['avatar']}' alt="Customers' Avatar" class="d-inline-block align-text-top bg-danger avatar">
+                            <img src='${clt['avatar']}' alt="Customers' Avatar" class="d-inline-block align-text-top bg-danger avatar">
                             <div class="details">
-                                <div class="card-title">${datas.olyxia.clients[i]['name']}</div>
-                                <div class="card-subtitle mb-2 text-muted">${datas.olyxia.clients[i]['title']}</div>
+                                <div class="card-title">${clt['name']}</div>
+                                <div class="card-subtitle mb-2 text-muted">${clt['title']}</div>
                             </div>
                         </div>
-                        <div class="card-text">${datas.olyxia.clients[i]['testimony']}</div>
+                        <div class="card-text">${clt['testimony']}</div>
                     </div>`;
             testimonial.insertAdjacentHTML('beforeend', testimonials(data));
+        });
+
+        // to scroll testimonial
+        const viewportWidth = window.innerWidth || document.documentElement.clientWidth;
+        let scroll_value = 0;
+        const maxScroll = () => {
+            scroll_value = scroll_value + 0;
+            testimonial.scrollTo(scroll_value, 0);
+        }
+        /**
+         * @param {number} rightScroll
+         */
+        const rightScroll = width => {
+            // change to scrollBy
+            scroll_value = scroll_value + width;
+            testimonial.scrollTo({
+                left: scroll_value,
+                behavior: 'smooth'
+            });
+        }
+        /**
+         * @param {number} leftScroll
+         */
+        const leftScroll = width => {
+            // change to scrollBy
+            scroll_value = scroll_value - width;
+            testimonial.scrollTo({
+                left: scroll_value,
+                behavior: 'smooth'
+            });
+        }
+        const zeroScroll = () => {
+            scroll_value = scroll_value + 0;
+            testimonial.scrollTo(scroll_value, 0);
         }
 
-        // const client = clients.map((client) => {
-        //     avatar.innerHTML = client.avatar;
-        //     card_title.innerHTML = client.name;
-        //     card_subtitle.innerHTML = client.title;
-        //     card_text.innerHTML = client.testimony;
-        // });
+        // phone view only
+        if (viewportWidth < 768) {
+            const testimonial_width = testimonial.getBoundingClientRect().width;
+            // max_scroll=> take the width of the testimonial, multiply by
+            // the difference of the length of the Json data and the amount to be displayed
+            const max_scroll = testimonial_width * (clients_length - 1);
+            // to the right
+            right_arrow.onclick = () => {
+                if (scroll_value >= max_scroll) {
+                    maxScroll();
+                } else {
+                    rightScroll(testimonial_width);
+                }
+            }
+            // to the left
+            left_arrow.onclick = () => {
+                if (scroll_value > 0) {
+                    leftScroll(testimonial_width);
+                } else {
+                    zeroScroll();
+                }
+            }
+        }
+        // All other viewport- tablet, laptop & desktop
+        else {
+            const card_width = document.querySelector('.card_width').getBoundingClientRect().width;
+            // max_scroll=> take the width of the card, multiply by
+            // the difference of the length of the Json data and the amount to be moved
+            const max_scroll = card_width * (clients_length - 1);
+            // to the right
+            right_arrow.onclick = () => {
+                if (scroll_value >= max_scroll) {
+                    maxScroll();
+                } else {
+                    rightScroll(card_width);
+                }
+            }
+            // to the left
+            left_arrow.onclick = () => {
+                if (scroll_value > 0) {
+                    leftScroll(card_width);
+                } else {
+                    zeroScroll();
+                }
+            }
+        }
+
 
         // olyxia employee/team members
         btn_change.onclick = () => {
             // to show
             if (btn_change.classList.contains('show_team')) {
-                for (i = 0; i < employees_length; i++) {
+                const employee = employees.map(emp => {
                     let teams = datas => `<div class="box mx-auto my-5 state_change">
                     <div class="imgbox mt-2">
-                        <img src="${datas.olyxia.employees[i]['image']}" alt="team" class="d-block mx-auto bg-warning">
+                        <img src="${emp.image}" alt="team" class="d-block mx-auto bg-warning">
                         <div class="details text-center bg-dark text-light mt-2 mx-auto">
-                            <h6>${datas.olyxia.employees[i]['name']}</h6>
-                            <p>${datas.olyxia.employees[i]['position']}</p>
+                            <h6>${emp.name}</h6>
+                            <p>${emp.position}</p>
                         </div>
                     </div>
                 </div>`
                     team.insertAdjacentHTML("beforeend", teams(data));
-                }
+                });
                 btn_show_team.innerHTML = 'Close';
                 btn_change.classList.replace('show_team', 'close_team');
             }
@@ -125,6 +204,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     team.removeChild(state);
                     btn_change.innerHTML = 'See All Team';
                     btn_change.classList.replace('close_team', 'show_team');
+                    team.scrollIntoView({
+                        behavior: "smooth",
+                        block: "center"
+                    });
                 }
             }
         }
@@ -159,19 +242,19 @@ Free_Trial_form.onsubmit = () => {
         error_message.innerHTML = "Name field cannot be empty";
         Free_Trial_fullName.classList.add('error_color');
         return false;
-    } else if (Free_Trial_fullName.value.length === 1) {
+    } else if (Free_Trial_fullName.value.length <= 3) {
         Free_Trial_fullName.focus();
-        error_message.innerHTML = 'Name field must be more than one character';
+        error_message.innerHTML = 'Name field must be more than two character';
+        Free_Trial_fullName.classList.add('error_color');
+        return false;
+    } else if (!fullname_alpha_regex.test(fullName.value)) {
+        Free_Trial_fullName.focus();
+        error_message.innerHTML = `Only alphabetical characters are allowed`;
         Free_Trial_fullName.classList.add('error_color');
         return false;
     } else if (fullName.value.match(fullname_empty_regex)) {
         Free_Trial_fullName.focus();
         error_message.innerHTML = `Input cannot be empty`;
-        Free_Trial_fullName.classList.add('error_color');
-        return false;
-    } else if (fullName.value.match(fullname_alpha_regex)) {
-        Free_Trial_fullName.focus();
-        error_message.innerHTML = `Only alphabetical characters are allowed`;
         Free_Trial_fullName.classList.add('error_color');
         return false;
     }
@@ -193,7 +276,25 @@ Free_Trial_form.onsubmit = () => {
     }
 };
 
+// Page animation
+const howItWorks = document.querySelector('#workings');
+const bwAnim = document.querySelector('.bw-call');
 
+// how it works
+window.onscroll = () => {
+    function isInViewports(element) {
+        let elem = element.getBoundingClientRect();
+        return (
+            elem.top >= 0 && elem.left >= 0 && elem.bottom <= (window.innerHeight || document.documentElement.clientHeight) && elem.right <= (window.innerWidth || document.documentElement.clientWidth)
+        );
+    }
+
+    if (isInViewports(howItWorks) == true) {
+        bwAnim.classList.add('bw-anim');
+    } else {
+        bwAnim.classList.remove('bw-anim');
+    }
+}
 
 // for bs hamburger(bs.js)
 
