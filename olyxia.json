@@ -70,6 +70,24 @@
   "clients":[
    {
    "avatar": "./Media/Avatar1.png",
+   "name": "Elina Khanom",
+   "title": "Aget Founder",
+   "testimony":"Lorem, ipsum dolor sit amet consectetur adipisicing elit. optio officiis eos et vero autem nemo sit fuga, qui amet!"
+   },
+   {
+   "avatar": "./Media/Avatar2.png",
+   "name": "Sifat Hasan",
+   "title": "Agero Founder",
+   "testimony":"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita optio officiis eos et vero autem nemo sit fuga, qui amet!"
+  },
+  {
+   "avatar": "./Media/Avatar3.png",
+   "name": "Lipy John",
+   "title": "Agen Founder",
+   "testimony":"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita optio officiis eos et vero autem nemo sit fuga, qui amet!"
+  },
+   {
+   "avatar": "./Media/Avatar1.png",
    "name": "Gbadamoshi Davies",
    "title": "Senior Developer at Zenith",
    "testimony":"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita optio officiis eos et vero autem nemo sit fuga, qui amet! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita optio officiis eos et vero autem nemo sit fuga, qui amet!"

@@ -26,10 +26,10 @@
     <!-- Pop-ups -->
     <!-- Signup pop-up -->
     <section class="popup signup_popup">
-        <div class="container popup_content h-75 rounded">
+        <div class="container popup_content lfs-4 rounded">
             <div class="d-flex justify-content-center wrapper">
                 <!-- cancel button -->
-                <div class="cancel"><i class="fa-solid fa-xmark fa-center"></i></div>
+                <div class="cancel"><i class="fa-solid fa-xmark"></i></div>
                 <!-- Heading -->
                 <div class="text-center">
                     <h3 class="my-3 text-info">Olyxia Newsletter</h3>
@@ -42,8 +42,7 @@
                     <div class="row signup_form_row mt-4">
                         <div class="col col-sm-auto">
                             <input type="email" name="emails" id="email" class="form-control" placeholder="Email"
-                                aria-describedby="Email"
-                                pattern="/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/">
+                                aria-describedby="Email" pattern=".+@.+\..+" required>
                         </div>
                         <div class="col signup_form_button">
                             <input type="submit" value="SUBSCRIBE" class="btn btn-info text-dark rounded btn-hov">
@@ -59,10 +58,10 @@
 
     <!-- Free trial pop-up -->
     <section class="popup trial_popup">
-        <div class="container popup_content h-70 rounded">
+        <div class="container popup_content lfs-4 rounded">
             <div class="d-flex justify-content-center wrapper">
                 <!-- cancel button -->
-                <div class="cancel"><i class="fa-solid fa-xmark fa-center"></i></div>
+                <div class="cancel"><i class="fa-solid fa-xmark"></i></div>
                 <!-- Heading -->
                 <div>
                     <h3 class="my-3 text-info">Start a Free Trial</h3>
@@ -72,25 +71,26 @@
                         <li>a free 7 days site maintainance and</li>
                         <li>a free consultancy on how you can improve your website</li>
                     </ul>
-                    We promise to reach out to you in the next few days.
-                    </p>
+                    <p>We promise to reach out to you in the next few days.</p>
                 </div>
                 <form action="" class="my-4" name="FTPopupForm">
                     <div class="form-group">
                         <input type="text" name="fullname" id="fullname" class="form-control" placeholder="Full Name"
-                            aria-describedby="Full Name">
-                    </div>
-                    <div class="form-group my-4">
-                        <input type="email" name="emails" id="email" class="form-control" placeholder="Email Address"
-                            aria-describedby="Email Address">
-                    </div>
-                    <div class="form-check mb-4">
-                        <input type="checkbox" class="form-check-input" id="consent">
-                        <label class="form-check-label" for="consent">By clicking this box, you accept to recieve our
-                            free
-                            tips and advice, our promotional emails and other marketing mails.</label>
-                    </div>
-                    <input type="submit" value="START TRIALS" class="btn btn-info text-dark rounded btn-hov w-100">
+                            aria-describedby="Full Name" pattern='[a-zA-Z]+$' required>
+                        <div class="form-group my-4">
+                            <input type="email" name="emails" id="email" class="form-control"
+                                placeholder="Email Address" aria-describedby="Email Address" pattern='.+@.+\..+'
+                                required>
+                        </div>
+                        <div class="form-check mb-4">
+                            <input type="checkbox" class="form-check-input" id="consent" required>
+                            <label class="form-check-label" for="consent">By clicking this box, you accept to recieve
+                                our
+                                free
+                                tips and advice, our promotional emails and other marketing mails.</label>
+                        </div>
+                        <div class="form-group error_message"></div>
+                        <input type="submit" value="START TRIALS" class="btn btn-info text-dark rounded btn-hov w-100">
                 </form>
             </div>
         </div>
@@ -246,7 +246,9 @@
                 <p>Building a brand doesn't happen overnight.
                     It takes a lot of work to forge strong relationship with people</p>
                 <!-- action button -->
-                <button class="btn btn-warning shadow">Learn More</button>
+                <button class="btn btn-warning shadow">
+                    <a class="nav-link" href="#about">Learn More</a>
+                </button>
             </div>
             <!-- Image box -->
             <div class="container mx-auto gallery mt-3">
@@ -281,8 +283,8 @@
                 <p>Reviews</p>
             </div>
             <div>
-                <h3 class="text-warning">08+</h3>
-                <p>Year Of Expirence</p>
+                <h3 class="text-warning experience">08+</h3>
+                <p>Year Of Experience</p>
             </div>
             <div>
                 <h3>300+</h3>
@@ -372,7 +374,9 @@
                 </div>
             </ul>
             <!-- action button -->
-            <button class="btn btn-warning mt-3 px-3 shadow">Learn More</button>
+            <button class="btn btn-warning mt-3 px-3 shadow">
+                <a class="nav-link" href="#workings">Learn More</a>
+            </button>
         </div>
     </section>
 
@@ -385,7 +389,10 @@
                 <p>We had aggressive KPI target, and I'd have to say they've delivered on all points. We've seen over a
                     30% rate increase.</p>
                 <!-- action button -->
-                <button class="btn btn-warning shadow">Learn More</button>
+                <button class="btn btn-warning shadow">
+                    <a class="nav-link" href="#faq" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Learn
+                        More</a>
+                </button>
             </div>
 
             <!-- image box-->
@@ -398,7 +405,7 @@
                     </div>
                 </div>
 
-                <div class="card bw-1 mt-5">
+                <div class="card bw mt-5 bw-call">
                     <img class="card-img-top" src="./Media/team2.jpg" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title">Roadmap Strategic</h5>
@@ -433,7 +440,7 @@
             <!-- for second box -->
             <div class="boxmid mx-auto my-5 bg-dark mt-2">
                 <div class="imgboxmid pt-2">
-                    <img src="/Media/member_00.png" alt="team" class="imgmid d-block mx-auto bg-warning">
+                    <img src="/Media/member_00.jpg" alt="team" class="imgmid d-block mx-auto bg-warning">
                     <div class="details text-center bg-light mt-2 mx-auto">
                         <h6>Ademolu David</h6>
                         <p>Founder, Olyxia</p>
@@ -450,6 +457,7 @@
                     </div>
                 </div>
             </div>
+            <!-- members injected by JS -->
         </div>
         <!-- To view more team members -->
         <button class="btn btn-warning d-block mx-auto shadow show_team btn_change" type="button">See All Team</button>
@@ -462,55 +470,18 @@
             <h5 class="text-center h3">What They Saying</h5>
             <!-- Textbox with logo and testimonials -->
             <div class="card grid testimonial mt-5">
-                <div class="card-body bg-light">
-                    <div class="card-head">
-                        <img src="/Media/Avatar1.png" alt="Customers' Avatar"
-                            class="d-inline-block align-text-top bg-primary avatar">
-                        <div class="details">
-                            <div class="card-title">Elina Khanom</div>
-                            <div class="card-subtitle mb-2 text-muted">Aget Founder</div>
-                        </div>
-                    </div>
-                    <div class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                        Expedita optio officiis eos et vero autem nemo sit fuga, qui amet!
-                    </div>
-                </div>
-
-                <div class="card-body bg-light">
-                    <div class="card-head">
-                        <img src="/Media/Avatar2.png" alt="Customers' Avatar"
-                            class="d-inline-block align-text-top bg-danger avatar">
-                        <div class="details">
-                            <div class="card-title">Sifat Hasan</div>
-                            <div class="card-subtitle mb-2 text-muted">Agero Founder</div>
-                        </div>
-
-                    </div>
-                    <div class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                        Expedita optio officiis eos et vero autem nemo sit fuga, qui amet!
-                    </div>
-                </div>
-
-                <div class="card-body bg-light">
-                    <div class="card-head">
-                        <img src="/Media/Avatar3.png" alt="Customers' Avatar"
-                            class="d-inline-block align-text-top bg-success avatar">
-                        <div class="details">
-                            <div class="card-title">Lipy John</div>
-                            <div class="card-subtitle mb-2 text-muted">Agen Founder</div>
-                        </div>
-                    </div>
-                    <div class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                        Expedita optio officiis eos et vero autem nemo sit fuga, qui amet!
-                    </div>
-                </div>
+                <!-- testimonial injected by JS -->
             </div>
             <!-- Button to view more testimonials -->
             <div class="arrow d-flex align-items-center justify-content-between">
                 <!-- left arrow -->
-                <i class="fa-solid fa-arrow-left-long fa-2x mt-3"></i>
+                <div class="favi-arrow">
+                    <i class="fa-solid fa-arrow-left-long fa-2x mt-3 favi-arrow"></i>
+                </div>
                 <!-- right arrow -->
-                <i class="fa-solid fa-arrow-right-long fa-2x mt-3"></i>
+                <div class="favi-arrow">
+                    <i class="fa-solid fa-arrow-right-long fa-2x mt-3 favi-arrow"></i>
+                </div>
             </div>
         </div>
     </section>
@@ -645,7 +616,12 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
         crossorigin="anonymous"></script>
+    <!-- anime.js cdn -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"
+        integrity="sha512-z4OUqw38qNLpn1libAN9BsoDx6nbNFio5lA6CuTp9NlK83b89hgyCVq+N5FdBJptINztxn1Z3SaKSKUS5UP60Q=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!--local script file -->
+    <script type="module" src="/JS/module.js"></script>
     <script src="/JS/main.js"></script>
 </body>
 
