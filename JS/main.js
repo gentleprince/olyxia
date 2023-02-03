@@ -37,6 +37,18 @@ const left_arrow = document.querySelector('.fa-arrow-left-long');
 // Page animation
 const howItWorks = document.querySelector('#workings');
 const bwAnim = document.querySelector('.bw-call');
+// homepage animation
+const gallery = document.querySelector('.gallery');
+const headerTitle = document.querySelector('.title');
+const count = document.querySelector('.count')
+const reviews = document.querySelector('.reviews');
+const experience = document.querySelector('.experience');
+const projects = document.querySelector('.projects');
+
+// service animation
+const service = document.querySelector('.service');
+// about animation
+const about = document.querySelector('.about');
 
 
 // to display popups
@@ -54,6 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
             trial_popup.style.display = 'flex';
             Free_Trial_fullName.focus();
         }
+
     }
 
     // to close popup after toggling

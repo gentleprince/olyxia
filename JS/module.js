@@ -5,7 +5,7 @@ import toggler from './components/bs_bootstrap.js';
 // Form Validations
 import * as fun from './components/validation.js';
 import {
-    anim,
+    onloadanim,
     onpagescroll
 } from './components/animation.js'
 
@@ -17,7 +17,9 @@ toggler.event;
 fun.validate();
 
 // animations
-// anime.js
-anime
-// when page scrolls
-onpagescroll;
+onpagescroll();
+
+window.window.onload = () => {
+    onloadanim.headerTitle;
+    onloadanim.gallery;
+}
