@@ -39,6 +39,9 @@ body,.bg,.modal-content,.accordion-item,.popup_content,.accordion-button,.accord
 .details{
   width:90%;
 }
+.overflow{
+  overflow: hidden;
+}
 
 /* Home Stylings */
 /* Home imgbox */
@@ -77,7 +80,7 @@ body,.bg,.modal-content,.accordion-item,.popup_content,.accordion-button,.accord
 }
 
 /* Service styling */
-#service{
+.service{
   min-height: 15vh;
 }
 .second{
@@ -251,19 +254,18 @@ body,.bg,.modal-content,.accordion-item,.popup_content,.accordion-button,.accord
 }
 .popup_content{
   width: 60%;
+  height: max-content;
 }
 .cancel{
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 20px;
   height: 20px;
-  cursor: pointer;    
-  float: right;
+  cursor: pointer;
   margin: 20px 10px 0 auto;
   border: 2px black solid;
   border-radius: 50%;
-}
-.fa-center{
-  display: block;
-  padding: 0 3px;
 }
 .signup_form_row{
   margin: 0 0 0 14%;
@@ -292,15 +294,45 @@ body,.bg,.modal-content,.accordion-item,.popup_content,.accordion-button,.accord
   flex-direction: column;
 }
 
+/* animation */
+.team_member,.about,.gallery,.imax{
+  transform:translateX(100%);
+}
+.service,.title,.max{
+  transform: translateX(-100%);
+}
+.team{
+  transform:translateY(100%);
+}
+.testimonial{
+  transform:scale(0);
+}
+
+.sideln_bounceleft{
+  animation:bounceleft 0.8s ease-in-out forwards;
+}
+.sideln_bounceright{
+  animation:bounceright 0.8s ease-in-out forwards;
+}
+.sidelnright{
+  animation:sidelnright 0.8s linear forwards;
+}
+.sidelnleft{
+  animation:sidelnleft 0.8s linear forwards;
+}
+.sidelnup{
+  animation:sidelnup 0.8s linear forwards;
+}
+.fadeIn{
+  animation:fadeIn 0.8s linear forwards;
+}
+.fadeOut{
+  animation:fadeOut 0.8s linear forwards;
+}
+
 /* Media Queries */
 
 /* Phone Media Queries */
-@media only screen and (max-width: 350px){
-  .h-75{
-    height: 70% !important;
-    width: 90%;
-  }
-}
 @media only screen and (max-width: 767px){ 
 .card-body {
   margin-bottom: 20px;
@@ -454,31 +486,13 @@ body,.bg,.modal-content,.accordion-item,.popup_content,.accordion-button,.accord
   .signup_form_button{
     margin: 10% auto 0 25%;
   }
-  .h-70{
-    height: 82%!important;
-  }
 }
-
-@media only screen and (max-width: 599px) and (max-height: 767px) {
-  .h-70 {
-    height: 100%!important;
-  }
-  .h-75 {
-    height: 65%!important;
-}
- }
 
 @media only screen and (min-width: 464px) and (max-width: 600px) and (orientation: portrait){
   .popup_content{
     width: 48%;
   }
 }
-
-@media only screen and (min-width: 339px) and (max-width: 767px) and (min-height: 800px) {
-  .h-75{
-    height: 45% !important;
-  }
- }
 
 /* Tablet Media Queries */
 @media only screen and (min-width:768px) and (max-width: 950px){
@@ -490,18 +504,21 @@ body,.bg,.modal-content,.accordion-item,.popup_content,.accordion-button,.accord
   max-width: 768px !important;
 }
 }
-@media only screen and (min-width:768px) and (max-width: 950px) and (orientation: portrait){
-  .h-75{
-    height: 28% !important;
-  }
-  .h-70{
-    height: 55% !important;
-  }
-}
+
 @media only screen and (max-height:700px){
-  .h-70{
-    font-size: 15px;
+  .lfs-4{
+    font-size: 13px;
   }
+  .my-3{
+    margin-top: 0.5rem !important;
+    margin-bottom: 0.5rem !important;
+  }
+  .my-4 {
+    margin-top: 1rem!important;
+}
+.mb-4,.my-4{
+  margin-bottom: 1rem!important;
+}
 }
 
 /* All Others Except Phone Media Queries */
@@ -562,7 +579,7 @@ body,.bg,.modal-content,.accordion-item,.popup_content,.accordion-button,.accord
 
 .bw-anim{
   padding-left: 20px;
-  animation: image 0.8s linear forwards;
+  animation: image 0.5s linear forwards;
   margin: -34px;
   }
   
@@ -631,9 +648,6 @@ body,.bg,.modal-content,.accordion-item,.popup_content,.accordion-button,.accord
     margin: 0 0 0 27%;
     width: 100%;
 }
-.h-75 {
-  height: 65%!important;
-}
 }
 
 /* Desktop Media Queries */
@@ -644,12 +658,6 @@ body,.bg,.modal-content,.accordion-item,.popup_content,.accordion-button,.accord
   .mlt--2>img{
     width:280px;
     height:280px;
-  }
-  .h-70 {
-    height: 68%;
-  }
-  .h-75 {
-    height: 50%!important;
   }
 }
 /* lg-desktop */
@@ -676,4 +684,89 @@ body,.bg,.modal-content,.accordion-item,.popup_content,.accordion-button,.accord
   to{
     transform: rotateZ(7deg) translate(-10px,40px);
   }  
+}
+
+@keyframes sidelnleft{
+  from{
+    transform: translateX(-100%);
+    opacity:0;
+  }
+  to{
+    transform: translateX(0);
+    opacity:1;
+  }
+}
+
+@keyframes sidelnright{
+  from{
+    transform: translateX(100%);
+    opacity:0;
+  }
+  to{
+    transform: translateX(0);
+    opacity:1;
+  }
+}
+
+@keyframes bounceright{
+  0%{
+    transform: translateX(100%);
+    opacity:0.2;
+  }
+  88%{
+    transform: translateX(-2.7%);
+    opacity:0.8;
+  }
+  100%{
+    transform: translateX(0);
+    opacity:1;
+  }
+}
+
+@keyframes bounceleft{
+  0%{
+    transform: translateX(-100%);
+    opacity:0.2;
+  }
+  88%{
+    transform: translateX(2.7%);
+    opacity:0.8;
+  }
+  100%{
+    transform: translateX(0);
+    opacity:1;
+  }
+}
+
+@keyframes sidelnup {
+  from{
+    transform: translateY(100%);
+    opacity:0;
+  }
+  to{
+    transform: translateY(0);
+    opacity:1;
+  }
+}
+
+@keyframes fadeIn {
+  from{
+    transform: scale(0);
+    opacity:0;
+  }
+  to{
+    transform: scale(1);
+    opacity:1;
+  }
+}
+
+@keyframes fadeOut{
+  from{
+    transform: scale(1);
+    opacity:1;
+  }
+  to{
+    transform: scale(0);
+    opacity:0;
+  }
 }
