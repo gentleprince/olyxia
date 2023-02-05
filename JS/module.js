@@ -3,18 +3,23 @@
 // Bootstrap modification file
 import toggler from './components/bs_bootstrap.js';
 // Form Validations
-import * as fun from './components/validation.js';
+import * as func from './components/validation.js';
+// All animations
 import {
     onloadanim,
     onpagescroll
-} from './components/animation.js'
+} from './components/animation.js';
+import * as data from './components/data.js';
+import {
+    testimonialScroll
+} from './components/scroll.js';
 
 
 // for bootstrap hamburger
 toggler.event;
 
 // to validate all pop-up forms
-fun.validate();
+func.validate();
 
 // animations
 onpagescroll();
@@ -22,3 +27,9 @@ onpagescroll();
 window.window.onload = () => {
     onloadanim;
 }
+
+// olyxia json data
+data.default();
+
+// testimonial scrolling
+testimonialScroll();

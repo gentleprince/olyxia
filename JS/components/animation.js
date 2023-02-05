@@ -57,9 +57,6 @@ const onpagescroll = () => {
         if (isInViewports(howItWorks) == true) {
             max.classList.add('sidelnleft');
         }
-        if (isInViewports(howItWorks) == true) {
-            imax.classList.add('sidelnright');
-        }
 
         // Team Animation
         if (isInViewports(team_area) == true) {
@@ -78,13 +75,18 @@ const onpagescroll = () => {
         // All viewport except phone
         if (viewportWidth > 768) {
             // how it works animations (vanilla js)
-            if (isInViewports(animate_box) == true) {
-                bwAnim.classList.add('bw-anim');
-                // } else { 
-                //     bwAnim.classList.remove('bw-anim');
+            if (isInViewports(howItWorks) == true) {
+                imax.classList.add('sidelnright');
             }
+            setTimeout(() => {
+                if (isInViewports(animate_box) == true) {
+                    bwAnim.classList.add('bw-anim');
+                }
+            }, 1000);
         } else {
-
+            if (isInViewports(max) == true) {
+                imax.classList.add('sidelnright');
+            }
         }
     }
 }
