@@ -9,7 +9,9 @@ import {
     onloadanim,
     onpagescroll
 } from './components/animation.js';
+// Api data (json)
 import * as data from './components/data.js';
+// testimonial arrow scroll
 import {
     testimonialScroll
 } from './components/scroll.js';

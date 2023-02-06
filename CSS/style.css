@@ -39,8 +39,11 @@ body,.bg,.modal-content,.accordion-item,.popup_content,.accordion-button,.accord
 .details{
   width:90%;
 }
-.overflow{
-  overflow: hidden;
+.overflow-x{
+  overflow-x: hidden;
+}
+.overflow-y{
+  overflow-y: hidden;
 }
 
 /* Home Stylings */
@@ -303,9 +306,6 @@ body,.bg,.modal-content,.accordion-item,.popup_content,.accordion-button,.accord
 }
 .team{
   transform:translateY(100%);
-}
-.testimonial{
-  transform:scale(0);
 }
 
 .sideln_bounceleft{

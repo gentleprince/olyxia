@@ -33,7 +33,6 @@ const zeroScroll = () => {
 
 const scrollable = () => {
     // phone view only
-    // phone view only
     if (viewportWidth < 768) {
         const testimonial_width = testimonial.getBoundingClientRect().width;
         // max_scroll=> take the width of the testimonial, multiply by
