@@ -3,7 +3,7 @@
 
 export default async function olyxia() {
     // url
-    const url = 'http://localhost:8158/olyxia.min.json'
+    const url = 'https://olyxia.netlify.app/olyxia.min.json'
     // fetch option
     const headers_option = {
         headers: {
