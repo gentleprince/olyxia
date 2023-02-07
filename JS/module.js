@@ -31,7 +31,7 @@ onpagescroll();
 if (window.location.href == 'http://127.0.0.1:5500/404.html') {
     loaded();
     async function loaded() {
-        let errorPageOnLoadAnims = await import('./components/animation404.js');
+        let errorPageOnLoadAnims = await import('./components/animation404.js',headers: {'Access-Control-Allow-Origin': '*'});
         errorPageOnLoadAnims.default();
     }
 } else {
