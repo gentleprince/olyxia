@@ -24,14 +24,19 @@ toggler.event;
 func.validate();
 
 // animations
+// when scrolling
 onpagescroll();
 
-window.window.onload = () => {
-    onloadanim;
+// when page is loaded
+if (window.location.href == 'http://127.0.0.1:5500/404.html') {
+    loaded();
+    async function loaded() {
+        let errorPageOnLoadAnims = await import('./components/animation404.js');
+        errorPageOnLoadAnims.default();
+    }
+} else {
+    window.window.onload = () => onloadanim;
 }
 
-// olyxia json data
-data.default();
-
-// testimonial scrolling
-testimonialScroll();
+// olyxia json data & testimonial scrolling
+data.default(testimonialScroll);

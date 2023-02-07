@@ -1,9 +1,10 @@
 // to fetch and display json data
 
 
-export default async function olyxia() {
+export default async function olyxia(scroll) {
     // url
-    const url = 'https://olyxia.netlify.app/olyxia.min.json'
+    // const url = 'https://olyxia.netlify.app/olyxia.min.json'
+    const url = 'http://127.0.0.1:5500/olyxia.min.json'
     // fetch option
     const headers_option = {
         headers: {
@@ -65,4 +66,7 @@ export default async function olyxia() {
                     </div>`;
         testimonial.insertAdjacentHTML('beforeend', testimonials(data));
     });
+
+    // scroll.js
+    scroll();
 }

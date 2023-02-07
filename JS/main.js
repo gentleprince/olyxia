@@ -68,6 +68,7 @@ const WhatheySay = document.querySelector('.WhatheySay');
 // popup animation
 const popup_content = document.querySelectorAll('.popup_content');
 
+
 // testimonial scroll
 let clients_length;
 let scroll_value = 0;

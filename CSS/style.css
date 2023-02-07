@@ -39,11 +39,8 @@ body,.bg,.modal-content,.accordion-item,.popup_content,.accordion-button,.accord
 .details{
   width:90%;
 }
-.overflow-x{
-  overflow-x: hidden;
-}
-.overflow-y{
-  overflow-y: hidden;
+.overflow{
+  overflow: hidden;
 }
 
 /* Home Stylings */
@@ -329,6 +326,9 @@ body,.bg,.modal-content,.accordion-item,.popup_content,.accordion-button,.accord
 .fadeOut{
   animation:fadeOut 0.8s linear forwards;
 }
+.burst{
+  animation:burst 0.8s linear;
+}
 
 /* Media Queries */
 
@@ -495,11 +495,13 @@ body,.bg,.modal-content,.accordion-item,.popup_content,.accordion-button,.accord
 }
 
 /* Tablet Media Queries */
-@media only screen and (min-width:768px) and (max-width: 950px){
+@media only screen and (min-width:768px) and (max-width: 991px){
   .mlt--2{
-  z-index: 2;
   margin-left: 50px;
 }
+.img-3 {
+  width: 27vw;
+  }
 .container{
   max-width: 768px !important;
 }
@@ -565,15 +567,12 @@ body,.bg,.modal-content,.accordion-item,.popup_content,.accordion-button,.accord
 
 .bw{
   border-width: 10px;
-  background-color: rgb(251, 255, 238);
-  border-color: rgb(251, 255, 238);
+  background-color: #fbffee;
+  border-color: #fbffee;
   outline: outset thin;
   outline-color: black;
-  position: relative;
   border-radius: 0;
-  z-index: 1;
   padding: 10px;
-  margin: 10px;
   box-shadow:var(--boxShadow);
 }
 
@@ -767,6 +766,17 @@ body,.bg,.modal-content,.accordion-item,.popup_content,.accordion-button,.accord
   }
   to{
     transform: scale(0);
+    opacity:0;
+  }
+}
+
+@keyframes burst{
+  from{
+    transform: scale(1);
+    opacity:1;
+  }
+  to{
+    transform: scale(2);
     opacity:0;
   }
 }
