@@ -2,6 +2,14 @@
   --brand:rgb(251 243 220);
   --btnColor:#d58b05;
   --boxShadow:5px 5px var(--btnColor);
+  --animationEIO:0.8s ease-in-out forwards;
+  --animationLNR:0.8s linear forwards;
+  --transition5LNR:.5s linear;
+  --teamBoxBorder:1px solid black;
+  --teamBoxDimension:200px;
+  --negativeStartPointTranslateX:translateX(-100%);
+  --positiveStartPointTranslateX:translateX(100%);
+  --positiveStartPointTranslateY:translateY(100%);
 }
 /* Global styling */
 *{
@@ -19,17 +27,17 @@ body,.bg,.modal-content,.accordion-item,.popup_content,.accordion-button,.accord
 .btn{
   outline: solid var(--btnColor) thin;
   border-radius: 0;
-  transition: .5s linear;
+  transition: var(--transition5LNR);
 }
 .btn:hover{
   background-color: var(--btnColor);
   color: white !important;
-  transition: .5s linear;
+  transition: var(--transition5LNR);
 }
 .btn-hov:hover{
   background-color: aqua;
   color:#333 !important;
-  transition: .5s linear;
+  transition: var(--transition5LNR);
 }
 /* grid for team member, testimonial and footer sections */
 .grid{
@@ -87,12 +95,12 @@ body,.bg,.modal-content,.accordion-item,.popup_content,.accordion-button,.accord
   margin-right: 20px;
 }
 .box-shadow{
-  transition: .5s linear;
+  transition: var(--transition5LNR);
   box-shadow: 6px -6px var(--btnColor);
 }
 .box-shadow:hover, .box:hover, .boxmid:hover{
-    transition: .5s linear;
-    box-shadow: 0px 0px 12px 5px var(--btnColor);
+  transition: var(--transition5LNR);
+  box-shadow: 0px 0px 12px 5px var(--btnColor);
 }
 
 /* About styling */
@@ -132,20 +140,20 @@ body,.bg,.modal-content,.accordion-item,.popup_content,.accordion-button,.accord
 
 /* Team section */
 .box{
-  width:200px;
-  height:200px;
-  border: 1px solid black;
-  box-shadow: var(--boxShadow);
-  transition: .8s linear;
+  width:var(--teamBoxDimension);
+  height:var(--teamBoxDimension);
+  border: var(--teamBoxBorder);
 }
 .boxmid{
   width:260px;
   height:260px;
+}
+.box,.boxmid{
   box-shadow:var(--boxShadow);
   transition: .8s linear;
 }
 .imgbox{
-  max-height:200px;
+  max-height:var(--teamBoxDimension);
 }
 .imgboxmid{
   max-height:250px;
@@ -164,7 +172,11 @@ body,.bg,.modal-content,.accordion-item,.popup_content,.accordion-button,.accord
   border:none;
   background-color: rgba(255,205,100,-0.5);
   grid-auto-flow: column;
+  scroll-snap-type: x mandatory;
   overflow-x: hidden;
+}
+.card_width{
+  scroll-snap-align: start;
 }
 .card-head{
   display: flex;
@@ -296,38 +308,38 @@ body,.bg,.modal-content,.accordion-item,.popup_content,.accordion-button,.accord
 
 /* animation */
 .team_member,.about,.gallery,.imax{
-  transform:translateX(100%);
+  transform:var(--positiveStartPointTranslateX);
 }
 .service,.title,.max{
-  transform: translateX(-100%);
+  transform: var(--negativeStartPointTranslateX);
 }
 .team{
-  transform:translateY(100%);
+  transform:var(--positiveStartPointTranslateY);
 }
 
 .sideln_bounceleft{
-  animation:bounceleft 0.8s ease-in-out forwards;
+  animation:bounceleft var(--animationEIO);
 }
 .sideln_bounceright{
-  animation:bounceright 0.8s ease-in-out forwards;
+  animation:bounceright var(--animationEIO);
 }
 .sidelnright{
-  animation:sidelnright 0.8s linear forwards;
+  animation:sidelnright var(--animationLNR);
 }
 .sidelnleft{
-  animation:sidelnleft 0.8s linear forwards;
+  animation:sidelnleft var(--animationLNR);
 }
 .sidelnup{
-  animation:sidelnup 0.8s linear forwards;
+  animation:sidelnup var(--animationLNR);
 }
 .fadeIn{
-  animation:fadeIn 0.8s linear forwards;
+  animation:fadeIn var(--animationLNR);
 }
 .fadeOut{
-  animation:fadeOut 0.8s linear forwards;
+  animation:fadeOut var(--animationLNR);
 }
 .burst{
-  animation:burst 0.8s linear;
+  animation:burst 0.8s ease-in;
 }
 
 /* Media Queries */
@@ -393,13 +405,13 @@ body,.bg,.modal-content,.accordion-item,.popup_content,.accordion-button,.accord
 
 /* Team Section */
 .boxmid{
-  width:200px;
-  height:200px;
+  width:var(--teamBoxDimension);
+  height:var(--teamBoxDimension);
   background-color: transparent !important;
-  border: 1px solid black;
+  border: var(--teamBoxBorder);
 }
 .imgboxmid{
-  width:200px;
+  width:var(--teamBoxDimension);
 }
 .imgmid{
   height:160px;
@@ -578,7 +590,7 @@ body,.bg,.modal-content,.accordion-item,.popup_content,.accordion-button,.accord
 
 .bw-anim{
   padding-left: 20px;
-  animation: image 0.5s linear forwards;
+  animation: image var(--transition5LNR) forwards;
   margin: -34px;
   }
   
@@ -687,7 +699,7 @@ body,.bg,.modal-content,.accordion-item,.popup_content,.accordion-button,.accord
 
 @keyframes sidelnleft{
   from{
-    transform: translateX(-100%);
+    transform: var(--negativeStartPointTranslateX);
     opacity:0;
   }
   to{
@@ -698,7 +710,7 @@ body,.bg,.modal-content,.accordion-item,.popup_content,.accordion-button,.accord
 
 @keyframes sidelnright{
   from{
-    transform: translateX(100%);
+    transform: var(--positiveStartPointTranslateX);
     opacity:0;
   }
   to{
@@ -709,7 +721,7 @@ body,.bg,.modal-content,.accordion-item,.popup_content,.accordion-button,.accord
 
 @keyframes bounceright{
   0%{
-    transform: translateX(100%);
+    transform: var(--positiveStartPointTranslateX);
     opacity:0.2;
   }
   88%{
@@ -724,7 +736,7 @@ body,.bg,.modal-content,.accordion-item,.popup_content,.accordion-button,.accord
 
 @keyframes bounceleft{
   0%{
-    transform: translateX(-100%);
+    transform: var(--negativeStartPointTranslateX);
     opacity:0.2;
   }
   88%{
@@ -739,7 +751,7 @@ body,.bg,.modal-content,.accordion-item,.popup_content,.accordion-button,.accord
 
 @keyframes sidelnup {
   from{
-    transform: translateY(100%);
+    transform: var(--positiveStartPointTranslateY);
     opacity:0;
   }
   to{
