@@ -1,18 +1,15 @@
 //Importing JS Components
 
 // Bootstrap modification file
-import toggler from './components/bs_bootstrap.min.js';
+import toggler from "./components/bs_bootstrap.js";
 // Form Validations
-import * as func from './components/validation.min.js';
+import * as func from "./components/validation.js";
 // All animations
-import * as animations from './components/animation.min.js';
+import * as animations from "./components/animation.js";
 // Api data (json)
-import * as data from './components/data.min.js';
+import * as data from "./components/data.js";
 // testimonial arrow scroll
-import {
-    testimonialScroll
-} from './components/scroll.min.js';
-
+import { testimonialScroll } from "./components/scroll.js";
 
 // for bootstrap hamburger
 toggler.event;
