@@ -1,2 +1,2 @@
 // 404 page animation
-const errorPage = document.querySelector('.errorpage');
+const errorPage = document.querySelector(".errorpage");
