@@ -42,30 +42,30 @@ export default window.onscroll = () => {
 
     // Service Animation
     if (isInViewports(service_area) == true) {
-        service.classList.add('sidelnleft');
+        service.classList.replace('opacity-0', 'sidelnleft');
     }
 
     // About Animation
     if (isInViewports(about_area) == true) {
-        about.classList.add('sidelnright');
+        about.classList.replace('opacity-0', 'sidelnright');
     }
 
     // how it works animation
     if (isInViewports(howItWorks) == true) {
-        max.classList.add('sidelnleft');
+        max.classList.replace('opacity-0', 'sidelnleft');
     }
 
     // Team Animation
     if (isInViewports(team_area) == true) {
-        team_member.classList.add('sidelnright');
+        team_member.classList.replace('opacity-0', 'sidelnright');
     }
     if (isInViewports(team_member) == true) {
-        team.classList.add('sidelnup');
+        team.classList.replace('opacity-0', 'sidelnup');
     }
 
     // Testimonial Animation
     if (isInViewports(WhatheySay) == true) {
-        testimonial.classList.add('fadeIn');
+        testimonial.classList.replace('opacity-0', 'fadeIn');
     }
 
 
