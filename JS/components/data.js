@@ -3,8 +3,7 @@
 
 export default async function olyxia(scroll) {
     // url
-    // const url = 'https://olyxia.netlify.app/olyxia.min.json'
-    const url = 'http://127.0.0.1:5500/olyxia.min.json'
+    const url = 'https://olyxia.netlify.app/olyxia.min.json'
     // fetch option
     const headers_option = {
         headers: {
