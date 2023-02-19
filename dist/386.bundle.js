@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkworkspace=self.webpackChunkworkspace||[]).push([[386],{386:(s,e,r)=>{r.r(e),r.d(e,{default:()=>a});const a=errorPageOnLoadAnim={burst:errorPage.classList.add("burst")}}}]);
